@@ -100,6 +100,9 @@ def explain_chord(intent, session):
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
+def blah():
+    print "Delete this"
+
     
 # --------------- Events ------------------
 
