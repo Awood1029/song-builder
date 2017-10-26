@@ -40,6 +40,17 @@ def build_response(session_attributes, speechlet_response):
         'response': speechlet_response
     }
 
+# --------------- General Python Logic Functions ------------------------ #
+def random_dict_keys(dictionary):
+    key_list = []
+    i = 0
+    while i < len(dictionary):
+        key_list.append(dictionary[i].keys())
+        i += 1
+    random_key = random.choice(key_list)
+    key_to_give = random_key[0]
+    return key_to_give
+
 # --------------- Functions that control the skill's behavior ------------------
 def get_welcome_response():
     session_attributes = {}
@@ -100,6 +111,19 @@ def explain_chord(intent, session):
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
+# ------------- Use for Random Scale In Defined Scale Class -------------- #
+def random_scale():
+    card_title = "Here's your random scale"
+    scale_to_give = random_dict_keys()
+    speech_output = "You should play the " + scale_to_give + " scale."
+    # Setting this to true ends the session and exits the skill.
+    should_end_session = False
+    return build_response({}, build_speechlet_response(
+        card_title, speech_output, None, should_end_session))
+
+
+
+
     
 # --------------- Events ------------------
 
@@ -128,6 +152,8 @@ def on_intent(intent_request, session):
         return random_chord()
     elif intent_name == "ExplainChord":
         return explain_chord(intent, session)
+    elif intent_name == "GiveRandomScaleIntent":
+        return random_scale()
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
