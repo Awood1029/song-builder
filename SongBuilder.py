@@ -111,7 +111,7 @@ def explain_chord(intent, session):
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
 
-# ------------- Use for Random Scale In Defined Scale Class -------------- #
+# Use for Random Scale In Defined Scale Class. Will need to build new function for a random scale from all dictionaries.
 def random_scale():
     card_title = "Here's your random scale"
     scale_to_give = random_dict_keys()
