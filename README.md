@@ -1,2 +1,2 @@
 # song-builder
-My first Alexa Skill
+Ambitious Alexa skill built to help aid musicians trying to write music
